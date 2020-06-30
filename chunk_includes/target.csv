@@ -1,0 +1,9 @@
+Picture,Item,Condition,Group,Word
+1fishSquareTank.png,fish,animate,A,Fish
+1fishSquareTank.png,fish,inanimate,B,Tank
+1deerDenseWood.png,deer,animate,B,Deer
+1deerDenseWood.png,deer,inanimate,A,Wood
+1sheepRedPen.png,sheep,animate,B,Sheep
+1sheepRedPen.png,sheep,inanimate,A,Pen
+1mooseNewPark.png,moose,animate,A,Moose
+1mooseNewPark.png,moose,inanimate,B,Park
