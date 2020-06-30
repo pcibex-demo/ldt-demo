@@ -39,7 +39,7 @@ newTrial( "welcome" ,
         .wait()
 );
 
-Template("target_items.csv", variable =>
+Template("target.csv", variable =>
   newTrial( "target" ,
     newTimer(1000)
         .start()
