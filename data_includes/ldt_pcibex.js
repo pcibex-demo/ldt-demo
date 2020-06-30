@@ -1,3 +1,5 @@
+PennController.Debug()
+
 PennController.ResetPrefix(null); // Initiates PennController
 
 // Start typing your code here
@@ -27,6 +29,7 @@ newTrial( "intro" ,
 )
 .log( "ID" , getVar("ID") )
 
+// トライアルが始まる前に画像などの実験材料をロード
 CheckPreloaded("target", "filler")
     .label( "preload" );
 
@@ -39,30 +42,31 @@ newTrial( "welcome" ,
         .wait()
 );
 
+// ターゲット用のテンプレート
 Template("target.csv", variable =>
   newTrial( "target" ,
-    newTimer(1000)
+    newTimer(1000) // いきなり次の画像が呈示されないように1秒間の空白を作っています。
         .start()
         .wait()
     ,
     newImage("picture", variable.Picture)
         .print()
     ,
-    newTimer(500)
+    newTimer(500) // 画像の呈示時間を設定しています。ここでは0.5秒間です。
         .start()
         .wait()
     ,
     getImage("picture")
-        .remove()
+        .remove() // このコマンドで画像を取り除かないと，ずっと画像が呈示されてしまう。
     ,
     newText("word", variable.Word)
-        .settings.css("font-size", "50px")
+        .settings.css("font-size", "50px") // フォントサイズを設定しています。
         .bold()
     ,
-    newText("left", "Yes")
+    newText("left", "Yes") // 語彙判断用の選択肢です。
         .settings.css("font-size", "30px")
     ,
-    newText("right", "No")
+    newText("right", "No") // 語彙判断用のもう一つの選択肢です。
         .settings.css("font-size", "30px")
     ,
     newCanvas(600,600)
@@ -70,11 +74,11 @@ Template("target.csv", variable =>
         .add("left at 25%", "bottom at 80%", getText("left"))
         .add("right at 75%", "bottom at 80%", getText("right"))
         .print()
-        .log()
+        .log() // 単語が呈示されたタイミングを記録しています。
     ,
     newKey("FJ")
         .wait()
-        .log()
+        .log() // どちらかの選択肢が選ばれたタイミングを記録しています。
     )
   .log( "ID"     , getVar("ID")    )
   .log( "Item"   , variable.Item   )
@@ -82,6 +86,7 @@ Template("target.csv", variable =>
   .log( "Group"  , variable.Group  )
 )
 
+// ターゲットとフィラーを疑似ランダム化するために，フィラー用のテンプレートを別に作ります。
 Template("fillers.csv", variable =>
   newTrial( "filler" ,
     newTimer(1000)
@@ -124,7 +129,10 @@ Template("fillers.csv", variable =>
   .log( "Condition" , variable.Condition )
 )
 
+
+// 結果の送信と最終画面
 SendResults( "send" )
+
 newTrial( "final" ,
     newText("<p>Thank you for your participation!</p>")
         .print()
