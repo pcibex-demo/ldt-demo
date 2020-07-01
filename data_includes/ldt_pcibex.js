@@ -1,4 +1,4 @@
-DebugOff()
+PennController.DebugOff()
 
 PennController.ResetPrefix(null); // Initiates PennController
 
