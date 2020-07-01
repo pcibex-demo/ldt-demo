@@ -14,7 +14,7 @@ newTrial( "intro" ,
     ,
     newText("<p>実際にある単語だと思ったら「F」のキーを，実際にはない単語だと思ったら「J」のキーを押してください。</p>")
     ,
-    newText("<p>IDを入力してから，下にあるstartボタンを押してください，</p>")
+    newText("<p>IDを入力してから，下にあるStartボタンを押してください，</p>")
     ,
     newTextInput("inputID")
         .print()
@@ -134,10 +134,10 @@ Template("fillers.csv", variable =>
 SendResults( "send" )
 
 newTrial( "final" ,
-    newText("<p>Thank you for your participation!</p>")
+    newText("<p>実験は以上で終了です。ありがとうございました。</p>")
         .print()
     ,
-    newText("<p><a href='https://www.pcibex.net/' href='_blank'>Click here to validate your participation.</a></p>")
+    newText("<p><a href='https://www.pcibex.net/' href='_blank'>ここをクリックして実験を終了してください。</a></p>")
         .print()
     ,
     newButton("void")
